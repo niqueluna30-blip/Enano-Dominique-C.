@@ -17,6 +17,7 @@ body {
   color: #333;
   overflow-x: hidden;
   padding-top: 80px; /* space for fixed header */
+  padding-bottom: 60px; /* space for fixed footer */
 }
 
 /* Top header for the blog */
@@ -41,16 +42,17 @@ body {
 
 /* Sidebar with straight edges */
 .sidenav {
-  height: calc(100% - 80px); /* adjusted for header */
+  height: calc(100% - 140px); /* 80px header + 60px footer */
   width: 300px; /* bigger width */
   position: fixed;
-  top: 80px; /* starts below header */
+  top: 80px; /* below header */
   left: 0;
   background: linear-gradient(180deg, #6bb9f0, #3a8dd5);
   padding-top: 30px;
   box-shadow: 4px 0 15px rgba(0,0,0,0.2);
   text-align: center;
   border-radius: 0; /* straight edges */
+  overflow-y: auto; /* scroll if content too tall */
 }
 
 /* Profile photo */
@@ -99,7 +101,7 @@ body {
 
 /* Content area */
 .content {
-  margin-left: 300px; /* match bigger sidebar */
+  margin-left: 300px; /* match sidebar width */
   padding: 40px 30px;
   min-height: 100vh;
   transition: margin-left 0.3s ease;
@@ -189,14 +191,19 @@ body {
   text-decoration: underline;
 }
 
-/* Footer without glow or twinkle */
+/* Footer */
 footer {
+  height: 60px; /* explicit height */
   background: #3a8dd5;
   color: #e0f7ff;
   text-align: center;
   padding: 20px 10px;
   font-weight: bold;
   border-radius: 0; /* straight edges */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 /* Responsive */
@@ -207,7 +214,7 @@ footer {
     position: relative;
     border-radius: 0;
     padding-bottom: 20px;
-    top: 0; /* header will adjust automatically */
+    top: 0; /* header adjusts automatically */
   }
   .content {
     margin-left: 0;
@@ -223,6 +230,7 @@ footer {
   ✨ My Personal Blog ✨
 </div>
 
+<!-- Sidebar -->
 <div class="sidenav">
   <img src="IMG20260213212308.jpg" alt="Dominique Enano" class="profile-photo">
   <h2>Dominique Enano</h2>
@@ -233,6 +241,7 @@ footer {
   <a href="#contact">Contact</a>
 </div>
 
+<!-- Main content -->
 <div class="content">
 
   <section id="intro">
@@ -306,6 +315,7 @@ footer {
 
 </div>
 
+<!-- Footer -->
 <footer>
     <p>© 2026 Dominique's Personal Blog | All Rights Reserved</p>
 </footer>

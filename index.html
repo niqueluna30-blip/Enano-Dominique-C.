@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dominique's Blog</title>
+<title>Dominique's Blog - Pastel Blue</title>
+
 <style>
 * {
   box-sizing: border-box;
@@ -13,77 +14,83 @@
 
 body {
   font-family: 'Verdana', sans-serif;
-  background: #e6f0fa; /* soft pastel blue */
+  background: #e6f0fa;
   color: #333;
-  overflow-x: hidden;
 }
 
-/* Sidebar with straight edges */
+/* HEADER */
+.top-header {
+  text-align: center;
+  background: #3a8dd5;
+  color: #e0f7ff;
+  padding: 25px 10px;
+  font-size: 2em;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.top-header p {
+  font-size: 0.5em;
+  font-weight: normal;
+  margin-top: 8px;
+}
+
+/* SIDEBAR */
 .sidenav {
-  height: 100%;
   width: 240px;
   position: fixed;
-  top: 0;
+  top: 110px;
   left: 0;
   background: linear-gradient(180deg, #6bb9f0, #3a8dd5);
-  padding-top: 30px;
+  padding: 25px 0;
+  height: calc(100% - 110px);
   box-shadow: 4px 0 15px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 0; 
+  overflow-y: auto;
 }
 
-/* Profile photo */
 .profile-photo {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   margin-bottom: 15px;
 }
 
-/* Profile heading */
 .sidenav h2 {
   color: #e0f7ff;
   margin-bottom: 20px;
-  font-size: 1.5em;
 }
 
-/* Sidebar links with smooth pastel hover */
 .sidenav a {
   display: block;
   color: #fff;
-  padding: 12px 20px;
+  padding: 12px;
   margin: 8px 15px;
   text-decoration: none;
   border-radius: 12px;
   font-weight: bold;
-  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition: 0.3s ease;
 }
 
-/* Sidebar link hover effect */
 .sidenav a:hover {
-  background: #b3e5fc; /* soft pastel blue background */
-  color: #0d47a1;      /* deeper blue text */
-  transform: translateX(5px); /* gentle shift */
+  background: #b3e5fc;
+  color: #0d47a1;
+  transform: translateX(5px);
 }
 
-/* Sidebar icons */
 .sidenav a::before {
-  content: "🔹"; 
-  margin-right: 8px;
-  color: #e0f7ff;
+  content: "🔹";
 }
 
-/* Content area */
+/* CONTENT */
 .content {
-  margin-left: 240px;
+  margin-left: 260px;
   padding: 40px 30px;
-  min-height: 100vh;
 }
 
-/* Section styling with fade-in */
+/* SECTIONS */
 .content section {
   background: #f0f8ff;
   padding: 25px;
@@ -95,22 +102,11 @@ body {
   transition: all 0.8s ease;
 }
 
-/* Gallery items */
-.gallery-item {
-  background: #d9edff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* Fade-in active class */
 .content section.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Headings */
 .content h2 {
   color: #3a8dd5;
   margin-bottom: 15px;
@@ -118,13 +114,12 @@ body {
   padding-bottom: 8px;
 }
 
-/* Paragraphs */
 .content p {
   margin-bottom: 12px;
   line-height: 1.6;
 }
 
-/* Hobbies list */
+/* HOBBIES */
 .hobbies ul {
   list-style: square;
   padding-left: 20px;
@@ -137,7 +132,7 @@ body {
   margin-top: 5px;
 }
 
-/* Gallery */
+/* GALLERY */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -145,59 +140,54 @@ body {
   margin-top: 15px;
 }
 
+.gallery-item {
+  background: #d9edff;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+
 .gallery-item img {
   width: 100%;
   border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .gallery-item img:hover {
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: scale(1.05);
 }
 
-.gallery-item img:hover {
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* Links */
-.content a {
-  color: #3a8dd5;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.content a:hover {
-  text-decoration: underline;
-}
-
-/* Footer without glow or twinkle */
+/* FOOTER */
 footer {
   background: #3a8dd5;
   color: #e0f7ff;
   text-align: center;
-  padding: 20px 10px;
+  padding: 20px;
   font-weight: bold;
-  border-radius: 0; /* straight edges */
 }
 
-/* Responsive */
-@media screen and (max-width: 600px) {
+/* MOBILE */
+@media screen and (max-width: 768px) {
   .sidenav {
+    position: relative;
     width: 100%;
     height: auto;
-    position: relative;
-    border-radius: 0;
-    padding-bottom: 20px;
+    top: 0;
   }
+
   .content {
     margin-left: 0;
   }
 }
 </style>
 </head>
+
 <body>
+
+<div class="top-header">
+  ✨ My Personal Blog ✨
+  <p>A space where I share a bit about myself and the things I'm passionate about</p>
+</div>
 
 <div class="sidenav">
   <img src="IMG20260213212308.jpg" alt="Dominique Enano" class="profile-photo">
@@ -211,102 +201,107 @@ footer {
 
 <div class="content">
 
-  <section id="intro">
-    <h2>🫧 ⋅ ˚₊‧ଳ ‧₊˚⋅:*.ೃ🪼 Short Introduction 🪼.ೃ*:⋅˚₊‧ ଳ ‧₊˚ ⋅ 🫧</h2>
-    <p>Hello, and welcome to my website! I'm Dominique—a dreamer, artist and a lifelong learner. Here, I share my ideas, projects, and things that inspire me.</p>
-  </section>
+<section id="intro">
+<h2>Short Introduction</h2>
+<p>Hello, and welcome to my website! I'm Dominique—a dreamer, artist, and a lifelong learner. Here, I share my ideas, projects, and things that inspire me.</p>
+</section>
 
-  <section id="about">
-    <h2>‎‧₊˚🖇️✩ ₊˚🎧⊹ ♡ About Me ♡ ⊹🎧˚₊ ✩🖇️˚₊</h2>
-    <p><b>Age:</b> 16 <br><b>Live In:</b> Brgy. San Pedro, Albuera, Leyte </p>
-    <p>Hi! My name is Dominique Enano, but you can call me Nick or Dom. I’m a dreamer, artist, and lifelong learner who loves balancing strength, creativity, and self-expression. I enjoy activities that build discipline and focus, while also giving me the freedom to imagine, create, and explore new perspectives.</p>
-    <p>Staying active and challenging myself has helped me develop perseverance and teamwork. At the same time, creative outlets allow me to express emotions, capture meaningful moments, and bring ideas to life. I’m inspired by stories filled with determination and growth, and by music that feels powerful and reflective.</p>
-    <p>Everything I do—whether it’s training, creating, watching inspiring stories, or listening to meaningful songs—shapes who I am becoming. This website is my space to share that journey, along with the passions and inspirations that continue to push me forward.</p>
-  </section>
+<section id="about">
+<h2>About Me</h2>
+<p><b>Age:</b> 16 <br><b>Live In:</b> Brgy. San Pedro, Albuera, Leyte</p>
 
-  <section id="hobbies" class="hobbies">
-    <h2>Hobbies / Interests</h2>
-    <ul>
-      <li> Taekwondo 🥋</li>
-      <li> Volleyball 🏐</li>
-      <li> Photography 📸</li>
-      <li> Listening to music 🎵</li>
-      <li> Drawing 📝</li>
-      <li> Bonding with family and friends 🤍🫶🏼✨️</li>
-      <li>Watching anime like:
-        <ul>
-          <li><em>Demon Slayer</em></li>
-          <li><em>Haikyu!!</em></li>
-          <li><em>My Hero Academia</em></li>
-          <li><em>Spy x Family</em></li>
-        </ul>
-      </li>
-    </ul>
-    <p><strong>Favorite Songs:</strong></p>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=y2ecafXmnIY&list=RDy2ecafXmnIY&start_radio=1" target="_blank">JVKE – "her" (feat.ZVC)</a></li>
-      <li><a href="https://www.youtube.com/watch?v=KjoNIhmc8NY&list=RDKjoNIhmc8NY&start_radio=1" target="_blank">Sienna Spiro – Die On This Hill</a></li>
-      <li><a href="https://www.youtube.com/watch?v=jXqf3uqLkkU&list=RDjXqf3uqLkkU&start_radio=1" target="_blank">Alex Warren – Eternity (Official Lyrics)</a></li>
-      <li><a href="https://www.youtube.com/watch?v=PwM1NRX0RRo&list=RDPwM1NRX0RRo&start_radio=1" target="_blank">Th Oh Hellos – Soldier, Poet, King (lyrics)</a></li>
-    </ul>
-  </section>
+<p>Hi! My name is Dominique Enano, but you can call me Nick or Dom. I’m a dreamer, artist, and lifelong learner who loves balancing strength, creativity, and self-expression.</p>
 
-  <section id="gallery">
-    <h2>˙✧˖°📸⋆｡ ˚ Gallery ˚ ｡⋆📸°˖✧˙</h2>
-    <div class="gallery">
-      <div class="gallery-item">
-        <img src="pic2.jfif" alt="Taekwondo Court">
-        <p>Taekwondo keeps me disciplined, focused, and ready for any challenge. 🥋</p>
-      </div>
-      <div class="gallery-item">
-        <img src="pic3.jpeg" alt="Drawing">
-        <p>Drawing lets me turn my imagination into reality, one stroke at a time. ✏️</p>
-      </div>
-      <div class="gallery-item">
-        <img src="woman-girl-technology-music.png" alt="Listening to music">
-        <p>Every song I listen to reminds me to stay inspired and chase my dreams. 🎵</p>
-      </div>
-    </div>
-  </section>
+<p>Staying active and challenging myself has helped me develop perseverance and teamwork. At the same time, creative outlets allow me to express emotions and bring ideas to life.</p>
 
-  <section id="contact">
-    <h2>Contact Information</h2>
-    <p>Feel free to contact me at:</p>
-    <ul>
-      <li>📱 Phone Number: 09614642468</li>
-      <li>✉️ Email: <a href="mailto:niqueluna.30@gmail.com">niqueluna.30@gmail.com</a></li>
-      <li>📘 Facebook: <a href="https://www.facebook.com/dominique.enano" target="_blank">Dominique Enano</a></li>
-      <li>📸 Instagram: <a href="https://www.instagram.com/moonlight73194/" target="_blank">@moonlight73194</a></li>
-    </ul>
-  </section>
+<p>This website is my space to share that journey, along with the passions and inspirations that continue to push me forward.</p>
+</section>
+
+<section id="hobbies" class="hobbies">
+<h2>Hobbies / Interests</h2>
+
+<ul>
+<li>Taekwondo 🥋</li>
+<li>Volleyball 🏐</li>
+<li>Photography 📸</li>
+<li>Listening to music 🎵</li>
+<li>Drawing 📝</li>
+<li>Bonding with family and friends 🤍🫶🏼✨️</li>
+<li>Watching anime:
+  <ul>
+    <li>Demon Slayer</li>
+    <li>Haikyu!!</li>
+    <li>My Hero Academia</li>
+    <li>Spy x Family</li>
+  </ul>
+</li>
+</ul>
+
+<p><strong>Favorite Songs:</strong></p>
+<ul>
+<li>JVKE – "her"</li>
+<li>Sienna Spiro – Die On This Hill</li>
+<li>Alex Warren – Eternity</li>
+<li>The Oh Hellos – Soldier, Poet, King</li>
+</ul>
+</section>
+
+<section id="gallery">
+<h2>Gallery</h2>
+
+<div class="gallery">
+<div class="gallery-item">
+<img src="pic2.jfif" alt="Taekwondo Court">
+<p>Taekwondo keeps me disciplined and focused. 🥋</p>
+</div>
+
+<div class="gallery-item">
+<img src="pic3.jpeg" alt="Drawing">
+<p>Drawing lets me turn imagination into reality. ✏️</p>
+</div>
+
+<div class="gallery-item">
+<img src="woman-girl-technology-music.png" alt="Listening to music">
+<p>Music keeps me inspired. 🎵</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Information</h2>
+<p>Feel free to contact me at:</p>
+<ul>
+<li>📱 09614642468</li>
+<li>✉️ niqueluna.30@gmail.com</li>
+<li>📘 Dominique Enano</li>
+<li>📸 @moonlight73194</li>
+</ul>
+</section>
 
 </div>
 
 <footer>
-    <p style="text-align:center;">© 2026 Dominique's Personal Blog | All Rights Reserved</p>
+© 2026 Dominique's Personal Blog | All Rights Reserved
 </footer>
 
 <script>
-// Fade-in sections on scroll
 const sections = document.querySelectorAll('.content section');
 
-window.addEventListener('scroll', () => {
+function revealSections() {
   const triggerBottom = window.innerHeight * 0.85;
 
   sections.forEach(section => {
     const sectionTop = section.getBoundingClientRect().top;
 
-    if(sectionTop < triggerBottom){
+    if (sectionTop < triggerBottom) {
       section.classList.add('active');
     }
   });
-});
+}
+
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
 </script>
 
 </body>
-
 </html>
-
-
-
-

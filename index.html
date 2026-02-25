@@ -20,44 +20,58 @@ body {
   padding-bottom: 60px; /* space for fixed footer */
 }
 
-/* Top header for the blog */
+/* Top header */
 .top-header {
-  position: fixed; /* fixed at top */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px; /* fixed height */
+  height: 80px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: #3a8dd5; /* pastel blue background */
-  color: #e0f7ff;      /* light blue text */
+  justify-content: space-between; /* to place menu button */
+  padding: 0 20px;
+  background: #3a8dd5;
+  color: #e0f7ff;
   font-size: 2em;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  z-index: 1000; /* higher than sidebar */
-  border-radius: 0; /* straight edges */
+  z-index: 1000;
+  border-radius: 0;
 }
 
-/* Sidebar with straight edges */
+/* Mobile menu button */
+.menu-toggle {
+  display: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Sidebar */
 .sidenav {
   height: calc(100% - 140px); /* 80px header + 60px footer */
-  width: 300px; /* bigger width */
+  width: 300px;
   position: fixed;
-  top: 80px; /* below header */
+  top: 80px;
   left: 0;
   background: linear-gradient(180deg, #6bb9f0, #3a8dd5);
   padding-top: 30px;
   box-shadow: 4px 0 15px rgba(0,0,0,0.2);
   text-align: center;
-  border-radius: 0; /* straight edges */
-  overflow-y: auto; /* scroll if content too tall */
+  border-radius: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  z-index: 900;
+}
+
+/* Sidebar hidden for mobile by default */
+.sidenav.mobile-hidden {
+  transform: translateX(-100%);
 }
 
 /* Profile photo */
 .profile-photo {
-  width: 130px; /* slightly bigger */
+  width: 130px;
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
@@ -66,14 +80,13 @@ body {
   margin-bottom: 15px;
 }
 
-/* Profile heading */
+/* Sidebar headings and links */
 .sidenav h2 {
   color: #e0f7ff;
   margin-bottom: 20px;
   font-size: 1.8em;
 }
 
-/* Sidebar links with smooth pastel hover */
 .sidenav a {
   display: block;
   color: #fff;
@@ -85,14 +98,12 @@ body {
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-/* Sidebar link hover effect */
 .sidenav a:hover {
-  background: #b3e5fc; /* soft pastel blue background */
-  color: #0d47a1;      /* deeper blue text */
-  transform: translateX(5px); /* gentle shift */
+  background: #b3e5fc;
+  color: #0d47a1;
+  transform: translateX(5px);
 }
 
-/* Sidebar icons */
 .sidenav a::before {
   content: "🔹"; 
   margin-right: 8px;
@@ -101,13 +112,13 @@ body {
 
 /* Content area */
 .content {
-  margin-left: 300px; /* match sidebar width */
+  margin-left: 300px;
   padding: 40px 30px;
   min-height: 100vh;
   transition: margin-left 0.3s ease;
 }
 
-/* Section styling with fade-in */
+/* Section styling */
 .content section {
   background: #f0f8ff;
   padding: 25px;
@@ -119,22 +130,12 @@ body {
   transition: all 0.8s ease;
 }
 
-/* Gallery items */
-.gallery-item {
-  background: #d9edff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-/* Fade-in active class */
 .content section.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Headings */
+/* Headings & paragraphs */
 .content h2 {
   color: #3a8dd5;
   margin-bottom: 15px;
@@ -142,23 +143,9 @@ body {
   padding-bottom: 8px;
 }
 
-/* Paragraphs */
 .content p {
   margin-bottom: 12px;
   line-height: 1.6;
-}
-
-/* Hobbies list */
-.hobbies ul {
-  list-style: square;
-  padding-left: 20px;
-  margin-bottom: 15px;
-}
-
-.hobbies ul ul {
-  list-style: circle;
-  padding-left: 20px;
-  margin-top: 5px;
 }
 
 /* Gallery */
@@ -180,26 +167,15 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Links */
-.content a {
-  color: #3a8dd5;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.content a:hover {
-  text-decoration: underline;
-}
-
 /* Footer */
 footer {
-  height: 60px; /* explicit height */
+  height: 60px;
   background: #3a8dd5;
   color: #e0f7ff;
   text-align: center;
   padding: 20px 10px;
   font-weight: bold;
-  border-radius: 0; /* straight edges */
+  border-radius: 0;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -208,17 +184,21 @@ footer {
 
 /* Responsive */
 @media screen and (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
   .sidenav {
-    width: 100%;
-    height: auto;
-    position: relative;
-    border-radius: 0;
-    padding-bottom: 20px;
-    top: 0; /* header adjusts automatically */
+    width: 250px;
+    height: calc(100% - 80px); /* only leave space for header */
+    top: 80px;
+    transform: translateX(-100%);
+  }
+  .sidenav.mobile-show {
+    transform: translateX(0);
   }
   .content {
     margin-left: 0;
-    padding-top: 20px;
+    padding: 20px;
   }
 }
 </style>
@@ -228,10 +208,11 @@ footer {
 <!-- Top header -->
 <div class="top-header">
   ✨ My Personal Blog ✨
+  <span class="menu-toggle">&#9776;</span>
 </div>
 
 <!-- Sidebar -->
-<div class="sidenav">
+<div class="sidenav mobile-hidden">
   <img src="IMG20260213212308.jpg" alt="Dominique Enano" class="profile-photo">
   <h2>Dominique Enano</h2>
   <a href="#intro">Intro</a>
@@ -250,14 +231,12 @@ footer {
   </section>
 
   <section id="about">
-    <h2>‎‧₊˚🖇️✩ ₊˚🎧⊹ ♡ About Me ♡ ⊹🎧˚₊ ✩🖇️˚₊</h2>
+    <h2>About Me</h2>
     <p><b>Age:</b> 16 <br><b>Live In:</b> Brgy. San Pedro, Albuera, Leyte </p>
     <p>Hi! My name is Dominique Enano, but you can call me Nick or Dom. I’m a dreamer, artist, and lifelong learner who loves balancing strength, creativity, and self-expression. I enjoy activities that build discipline and focus, while also giving me the freedom to imagine, create, and explore new perspectives.</p>
-    <p>Staying active and challenging myself has helped me develop perseverance and teamwork. At the same time, creative outlets allow me to express emotions, capture meaningful moments, and bring ideas to life. I’m inspired by stories filled with determination and growth, and by music that feels powerful and reflective.</p>
-    <p>Everything I do—whether it’s training, creating, watching inspiring stories, or listening to meaningful songs—shapes who I am becoming. This website is my space to share that journey, along with the passions and inspirations that continue to push me forward.</p>
   </section>
 
-  <section id="hobbies" class="hobbies">
+  <section id="hobbies">
     <h2>Hobbies / Interests</h2>
     <ul>
       <li> Taekwondo 🥋</li>
@@ -266,45 +245,23 @@ footer {
       <li> Listening to music 🎵</li>
       <li> Drawing 📝</li>
       <li> Bonding with family and friends 🤍🫶🏼✨️</li>
-      <li>Watching anime like:
-        <ul>
-          <li><em>Demon Slayer</em></li>
-          <li><em>Haikyu!!</em></li>
-          <li><em>My Hero Academia</em></li>
-          <li><em>Spy x Family</em></li>
-        </ul>
-      </li>
-    </ul>
-    <p><strong>Favorite Songs:</strong></p>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=y2ecafXmnIY&list=RDy2ecafXmnIY&start_radio=1" target="_blank">JVKE – "her" (feat.ZVC)</a></li>
-      <li><a href="https://www.youtube.com/watch?v=KjoNIhmc8NY&list=RDKjoNIhmc8NY&start_radio=1" target="_blank">Sienna Spiro – Die On This Hill</a></li>
-      <li><a href="https://www.youtube.com/watch?v=jXqf3uqLkkU&list=RDjXqf3uqLkkU&start_radio=1" target="_blank">Alex Warren – Eternity (Official Lyrics)</a></li>
-      <li><a href="https://www.youtube.com/watch?v=PwM1NRX0RRo&list=RDPwM1NRX0RRo&start_radio=1" target="_blank">Th Oh Hellos – Soldier, Poet, King (lyrics)</a></li>
     </ul>
   </section>
 
   <section id="gallery">
-    <h2>˙✧˖°📸⋆｡ ˚ Gallery ˚ ｡⋆📸°˖✧˙</h2>
+    <h2>Gallery</h2>
     <div class="gallery">
       <div class="gallery-item">
         <img src="pic2.jfif" alt="Taekwondo Court">
-        <p>Taekwondo keeps me disciplined, focused, and ready for any challenge. 🥋</p>
       </div>
       <div class="gallery-item">
         <img src="pic3.jpeg" alt="Drawing">
-        <p>Drawing lets me turn my imagination into reality, one stroke at a time. ✏️</p>
-      </div>
-      <div class="gallery-item">
-        <img src="woman-girl-technology-music.png" alt="Listening to music">
-        <p>Every song I listen to reminds me to stay inspired and chase my dreams. 🎵</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact Information</h2>
-    <p>Feel free to contact me at:</p>
+    <h2>Contact</h2>
     <ul>
       <li>📱 Phone Number: 09614642468</li>
       <li>✉️ Email: <a href="mailto:niqueluna.30@gmail.com">niqueluna.30@gmail.com</a></li>
@@ -335,9 +292,14 @@ window.addEventListener('scroll', () => {
 
 // Fade-in on page load
 window.addEventListener('load', () => {
-  sections.forEach(section => {
-    section.classList.add('active');
-  });
+  sections.forEach(section => section.classList.add('active'));
+});
+
+// Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const sidenav = document.querySelector('.sidenav');
+menuToggle.addEventListener('click', () => {
+  sidenav.classList.toggle('mobile-show');
 });
 </script>
 </body>
